@@ -1,42 +1,48 @@
 from math import ceil
 
 
-def surcharge(cart_value: int) -> int:
+def small_order_surcharge(cart_value: int) -> int:
     """
-    Calculate the cart value based on the cart value.
-    The value is in cents.
-    param request: The raw cart value.
-    return: The calculated cart value.
+    Calculate and return the small order surcharge based on the cart value.
+
+    The value is returned in cents.
     """
     return max(0, 1000 - cart_value)
 
 
 def delivery_fee(distance: int) -> int:
     """
-    Calculate the delivery fee based on the delivery distance.
-    The value is in meters.
-    param distance: The delivery distance.
-    return: The calculated delivery fee.
+    Calculate and return the delivery fee based on the delivery distance.
+
+    distance: The delivery distance. (in meters)
+
+    The value is returned in cents.
     """
-    base_fee: int = 200
+    BASE_FEE: int = 200
+    ADDITIONAL_FEE: int = 100
+
     additional_fees: int = ceil((distance - 1000) / 500)
     if additional_fees < 0:
         additional_fees = 0
-    return base_fee + additional_fees * 100
+    return BASE_FEE + additional_fees * ADDITIONAL_FEE
 
 
 def items_fee(number_of_items: int) -> int:
     """
-    Calculate the surcharge and possible bulk fee based on the number of items.
-    param number_of_items: The number of items.
-    return: The combined surcharge and bulk fee.
+    Calculate and return the total fee based on the number of items.
+    the total includes a bulk fee for orders with more than 12 items.
+
+    The value is returned in cents.
     """
+    SURCHARGE = 50
+    BULK_FEE: int = 120
+
     if number_of_items < 5:
         return 0
 
-    item_surcharge: int = (number_of_items - 4) * 50
+    item_surcharge: int = SURCHARGE * (number_of_items - 4)
 
     if number_of_items >= 12:
-        return item_surcharge + 120
+        return item_surcharge + BULK_FEE
 
     return item_surcharge
