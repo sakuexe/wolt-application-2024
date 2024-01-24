@@ -23,3 +23,20 @@ def delivery_fee(distance: int) -> int:
     if additional_fees < 0:
         additional_fees = 0
     return base_fee + additional_fees * 100
+
+
+def items_fee(number_of_items: int) -> int:
+    """
+    Calculate the surcharge and possible bulk fee based on the number of items.
+    param number_of_items: The number of items.
+    return: The combined surcharge and bulk fee.
+    """
+    if number_of_items < 5:
+        return 0
+
+    item_surcharge: int = (number_of_items - 4) * 50
+
+    if number_of_items >= 12:
+        return item_surcharge + 120
+
+    return item_surcharge
