@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from calculations import subcharge
+from calculations import surcharge, delivery_fee
 
 
 class Order(BaseModel):
@@ -18,5 +18,6 @@ app = FastAPI()
 @app.post("/")
 def root(order: Order):
     fees = 0  # in cents
-    fees += subcharge(order.cart_value)
+    fees += surcharge(order.cart_value)
+    fees += delivery_fee(order.delivery_distance)
     return order, fees
