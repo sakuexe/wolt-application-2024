@@ -29,4 +29,4 @@ def root(order: Order):
     # Friday rush (3pm - 7pm UTC) + 20% fee
 
     # the delivery fee can NEVER be more than 15 euros (1500 cents)
-    return min(fees, 1500)
+    return {"delivery_fee": min(fees, 1500)}
