@@ -7,7 +7,9 @@ def small_order_surcharge(cart_value: int) -> int:
 
     The value is returned in cents.
     """
-    return max(0, 1000 - cart_value)
+    MIN_CART_VALUE: int = 1000
+
+    return max(0, MIN_CART_VALUE - cart_value)
 
 
 def delivery_fee(distance: int) -> int:
