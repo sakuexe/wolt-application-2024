@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from calculations import small_order_surcharge, delivery_fee, items_fee, rush_hour_fee
+from calculations import small_order_surcharge, distance_fee, items_fee, rush_hour_fee
 from validate import validate_request
 
 
@@ -26,7 +26,7 @@ def root(order: Order):
 
     fees = 0  # in cents
     fees += small_order_surcharge(order.cart_value)
-    fees += delivery_fee(order.delivery_distance)
+    fees += distance_fee(order.delivery_distance)
     fees += items_fee(order.number_of_items)
     fees += rush_hour_fee(order.time, fees)
 

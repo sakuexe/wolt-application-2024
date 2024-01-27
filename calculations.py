@@ -14,7 +14,7 @@ def small_order_surcharge(cart_value: int) -> int:
     return max(0, MIN_CART_VALUE - cart_value)
 
 
-def delivery_fee(distance: int) -> int:
+def distance_fee(distance: int) -> int:
     """
     Calculate and return the delivery fee based on the delivery distance.
 
@@ -24,10 +24,8 @@ def delivery_fee(distance: int) -> int:
     """
     BASE_FEE: int = 200
     ADDITIONAL_FEE: int = 100
-    # make sure the distance is positive
-    distance = abs(distance)
 
-    additional_fees: int = ceil((distance - 1000) / 500)
+    additional_fees: int = ceil((abs(distance) - 1000) / 500)
     if additional_fees < 0:
         additional_fees = 0
     return BASE_FEE + additional_fees * ADDITIONAL_FEE
