@@ -12,7 +12,7 @@ This script generates random orders and sends them to the API.
 It is made to be used to test and review the API.
 """
 
-ORDER_INTERVAL = 5  # Seconds between orders
+ORDER_INTERVAL = 3  # Seconds between orders
 
 api_url = "http://localhost:8000/"
 if len(sys.argv) > 1 and sys.argv[1] == "--container":
@@ -55,7 +55,7 @@ def random_order() -> None:
 
 
 if len(sys.argv) > 1 and sys.argv[1] == "--container":
-    for i in range(4):
+    for i in range(3):
         random_order()
         sleep(ORDER_INTERVAL)
 else:

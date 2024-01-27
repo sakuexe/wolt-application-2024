@@ -32,25 +32,10 @@ I added a fake client that makes randomized order requests to the API.
 So you can just run the program and see the results. This "client"
 only makes 3 orders and then stops.
 
-If you want to make more requests, you can run the client manually
-with the following commands:
+If you want to make more requests, you can make requests to the
+endpoint with `curl` or the `fake_client.py` script.
 
-```bash
-# Linux / macOS
-source venv/bin/activate
-# Windows
-venv\Scripts\activate.bat
-# Install the dependencies
-pip install -r requirements.txt
-# Run the client
-python3 fake_client.py
-```
-
-Or you can make requests manually with `curl`:
-
-```bash
-curl -X POST -H "Content-Type: application/json" -d '{"cart_value": 790, "delivery_distance": 2235, "number_of_items": 4, "time": "2024-01-15T13:00:00Z"}' http://127.0.0.1:8000
-```
+The guide to those in the "Manually" section (part 4.).
 
 ### Manually
 
