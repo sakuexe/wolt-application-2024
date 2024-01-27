@@ -54,6 +54,9 @@ def random_order() -> None:
     print(response)
 
 
-for i in range(4):
+if len(sys.argv) > 1 and sys.argv[1] == "--container":
+    for i in range(4):
+        random_order()
+        sleep(ORDER_INTERVAL)
+else:
     random_order()
-    sleep(ORDER_INTERVAL)
