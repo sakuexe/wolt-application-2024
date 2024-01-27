@@ -13,7 +13,7 @@ The original assignment is in it's [original repository](https://github.com/wolt
 
 ## Used Technologies
 
-- [Python](https://www.python.org/)
+- [Python 3.11](https://www.python.org/)
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Uvicorn](https://www.uvicorn.org/)
 - [pytest](https://docs.pytest.org/en/6.2.x/)
@@ -36,8 +36,13 @@ If you want to make more requests, you can run the client manually
 with the following commands:
 
 ```bash
+# Linux / macOS
 source venv/bin/activate
+# Windows
+venv\Scripts\activate.bat
+# Install the dependencies
 pip install -r requirements.txt
+# Run the client
 python3 fake_client.py
 ```
 
@@ -76,6 +81,15 @@ uvicorn main:app --port 4321
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"cart_value": 790, "delivery_distance": 2235, "number_of_items": 4, "time": "2024-01-15T13:00:00Z"}' http://127.0.0.1:8000
+```
+
+or use the fake client for randomized requests:
+
+```bash
+# linux / macOS
+python3 fake_client.py
+# Windows
+python fake_client.py
 ```
 
 ### How to run tests
