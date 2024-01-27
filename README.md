@@ -20,6 +20,19 @@ The original assignment is in it's [original repository](https://github.com/wolt
 
 ## How to run
 
+### Docker
+
+1. Run docker compose
+
+```bash
+docker-compose up
+```
+
+I added a fake client that makes randomized order requests to the API.
+So you can just run the program and see the results.
+
+### Manually
+
 1. Enter the virtual environment
 
 ```bash
