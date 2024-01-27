@@ -38,7 +38,7 @@ with the following commands:
 ```bash
 source venv/bin/activate
 pip install -r requirements.txt
-python3 client.py
+python3 fake_client.py
 ```
 
 Or you can make requests manually with `curl`:
