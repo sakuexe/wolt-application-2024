@@ -5,11 +5,14 @@ from requests import post
 from datetime import datetime
 from calculations import rush_hour_fee
 import sys
+from time import sleep
 
 """
 This script generates random orders and sends them to the API.
 It is made to be used to test and review the API.
 """
+
+ORDER_INTERVAL = 5  # Seconds between orders
 
 api_url = "http://localhost:8000/"
 if len(sys.argv) > 1 and sys.argv[1] == "--container":
@@ -45,8 +48,12 @@ def random_order() -> None:
     if rush_hour_fee(time, cart_value):
         print("Friday rush")
 
+    response = post(api_url, json=body).json()
+    sleep(0.2)  # To avoid mixing up the docker logs
     print("Response body:")
-    print(post(api_url, json=body).json())
+    print(response)
 
 
-random_order()
+for i in range(4):
+    random_order()
+    sleep(ORDER_INTERVAL)

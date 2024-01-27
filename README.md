@@ -29,7 +29,23 @@ docker-compose up
 ```
 
 I added a fake client that makes randomized order requests to the API.
-So you can just run the program and see the results.
+So you can just run the program and see the results. This "client"
+only makes 3 orders and then stops.
+
+If you want to make more requests, you can run the client manually
+with the following commands:
+
+```bash
+source venv/bin/activate
+pip install -r requirements.txt
+python3 client.py
+```
+
+Or you can make requests manually with `curl`:
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"cart_value": 790, "delivery_distance": 2235, "number_of_items": 4, "time": "2024-01-15T13:00:00Z"}' http://127.0.0.1:8000
+```
 
 ### Manually
 

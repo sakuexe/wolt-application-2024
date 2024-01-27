@@ -17,7 +17,7 @@ services:
       - .:/usr/src/woltclient
     depends_on:
       - wolt-api
-    command: sh -c "pip install requests && python3 random_orders.py --container"
+    command: sh -c "pip install requests > /dev/null && python3 -u random_orders.py --container"
     networks:
       - default
 
