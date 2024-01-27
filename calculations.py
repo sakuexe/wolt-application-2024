@@ -1,4 +1,6 @@
 from math import ceil
+from datetime import datetime
+import math
 
 
 def small_order_surcharge(cart_value: int) -> int:
@@ -48,3 +50,34 @@ def items_fee(number_of_items: int) -> int:
         return item_surcharge + BULK_FEE
 
     return item_surcharge
+
+
+def rush_hour_fee(iso_time: str, current_fee) -> int:
+    """
+    Calculate and return the rush hour fee based on the time of the order.
+    If the order is placed between 3pm and 7pm on a Friday, the fee is +20%
+    to the total order value.
+
+    The time is sent in ISO format and UTC timezone (YYYY-MM-DDTHH:MM:SSZ).
+
+    The value is returned in cents.
+    """
+
+    ORDER_TIME = datetime.fromisoformat(iso_time)
+    RUSH_HOUR_FEE = current_fee * 0.2
+
+    # don't apply if the order is not placed on a Friday
+    if ORDER_TIME.weekday() != 4:
+        return 0
+
+    # don't apply if the order is placed before 3:00pm
+    if ORDER_TIME.hour < 15:
+        return 0
+
+    # don't apply if the order is placed after 7:00pm
+    if ORDER_TIME.hour >= 19:
+        return 0
+
+    # if the checks pass return the rush hour fee
+    # rounds the fee up to the nearest cent (no subcents)
+    return math.ceil(RUSH_HOUR_FEE)
