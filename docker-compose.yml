@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  wolt-api:
+    build: .
+    container_name: wolt-api
+    ports:
+      - 8000:8000
+    networks:
+      - default
+
+  test-client:
+    image: python:3.11.7-alpine
+    container_name: test-client
+    working_dir: /usr/src/woltclient
+    volumes:
+      - .:/usr/src/woltclient
+    depends_on:
+      - wolt-api
+    command: sh -c "pip install requests && python3 random_orders.py --container"
+    networks:
+      - default
+
+networks:
+  default:
+    name: wolt-network
