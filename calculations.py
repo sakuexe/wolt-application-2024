@@ -24,6 +24,8 @@ def delivery_fee(distance: int) -> int:
     """
     BASE_FEE: int = 200
     ADDITIONAL_FEE: int = 100
+    # make sure the distance is positive
+    distance = abs(distance)
 
     additional_fees: int = ceil((distance - 1000) / 500)
     if additional_fees < 0:

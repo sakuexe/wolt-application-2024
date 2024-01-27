@@ -1,22 +1,30 @@
 from datetime import datetime
+from fastapi import HTTPException
 
 
-def validate_request(order) -> str:
+def validate_request(order):
+    # The delivery distance isn't validated, as it is used as an absolute value
 
-    # no negative values
     if order.cart_value < 0:
-        return "`cart_value` is negative"
-    if order.delivery_distance < 0:
-        return "`delivery_distance` is negative"
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid input. Reason: `cart_value` is negative"
+        )
     if order.number_of_items < 0:
-        return "`number_of_items` is negative"
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid input. Reason: `number_of_items` is negative"
+        )
 
-    # time must be in iso format and in UTC
     try:
         time = datetime.fromisoformat(order.time)
         if time.tzname() != "UTC":
-            return "`time` is not in UTC"
+            raise HTTPException(
+                status_code=400,
+                detail="Invalid input. Reason: `time` is not in UTC timezone"
+            )
     except ValueError:
-        return "`time` is not in iso format"
-
-    return ""
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid input. Reason: `time` is not in ISO format"
+        )

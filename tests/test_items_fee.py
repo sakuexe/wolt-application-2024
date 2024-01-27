@@ -1,4 +1,7 @@
 from calculations import items_fee
+"""
+Test cases for calculating the bulk fee of the order.
+"""
 
 SURCHARGE: int = 50
 BULK_FEE: int = 120

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from pydantic import BaseModel
 
 from calculations import small_order_surcharge, delivery_fee, items_fee, rush_hour_fee
@@ -18,12 +18,8 @@ app = FastAPI()
 
 @app.post("/")
 def root(order: Order):
-    check_invalid = validate_request(order)
-    if check_invalid:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Invalid input. Reason: {check_invalid}"
-        )
+    validate_request(order)
+
     # free delivery for orders over 200 euros (20000 cents)
     if order.cart_value >= 20000:
         return {"delivery_fee": 0}
