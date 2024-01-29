@@ -8,6 +8,7 @@ The function takes in the cart's value and returns the surcharge in cents
 def test_under_base_fee():
     assert small_order_surcharge(500) == 500
     assert small_order_surcharge(1) == 999
+    assert small_order_surcharge(999) == 1
 
 
 def test_over_base_fee():

@@ -1,8 +1,15 @@
 from fastapi.testclient import TestClient
 from main import app
 
+"""
+Test the validation logic.
+Cart value and number of items must be positive integers.
+Time must be in ISO format and in UTC timezone.
+"""
+
 
 def test_invalid_cart_value():
+    # negative cart value
     request = {
         "cart_value": -1,
         "delivery_distance": 1000,
@@ -19,6 +26,7 @@ def test_invalid_cart_value():
 
 
 def test_invalid_number_of_items():
+    # negative number of items
     request = {
         "cart_value": 1000,
         "delivery_distance": 1000,
@@ -35,6 +43,7 @@ def test_invalid_number_of_items():
 
 
 def test_invalid_time_format():
+    # test for non-ISO format
     request = {
         "cart_value": 1000,
         "delivery_distance": 1000,
@@ -51,6 +60,7 @@ def test_invalid_time_format():
 
 
 def test_invalid_timezone():
+    # test for non-UTC timezone
     request = {
         "cart_value": 1000,
         "delivery_distance": 1000,

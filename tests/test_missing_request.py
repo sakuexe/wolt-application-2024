@@ -1,7 +1,7 @@
 from main import app
 from fastapi.testclient import TestClient
 """
-Test cases for the entire API in case of an invalid request.
+Test cases for the entire API in case of missing parameters.
 """
 
 

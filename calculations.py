@@ -17,8 +17,7 @@ def small_order_surcharge(cart_value: int) -> int:
 def distance_fee(distance: int) -> int:
     """
     Calculate and return the delivery fee based on the delivery distance.
-
-    distance: The delivery distance. (in meters)
+    (in meters)
 
     The value is returned in cents.
     """
@@ -38,15 +37,19 @@ def items_fee(number_of_items: int) -> int:
 
     The value is returned in cents.
     """
-    SURCHARGE = 50
+    SURCHARGE: int = 50
     BULK_FEE: int = 120
+    # the minimum amount of items needed for the surcharge to apply
+    MIN_FEE_ITEMS: int = 5
+    # the amount of items needed for the bulk fee to apply
+    MIN_BULK_ITEMS: int = 12
 
-    if number_of_items < 5:
+    if number_of_items < MIN_FEE_ITEMS:
         return 0
 
-    item_surcharge: int = SURCHARGE * (number_of_items - 4)
+    item_surcharge: int = SURCHARGE * (number_of_items - (MIN_FEE_ITEMS - 1))
 
-    if number_of_items >= 12:
+    if number_of_items >= MIN_BULK_ITEMS:
         return item_surcharge + BULK_FEE
 
     return item_surcharge
@@ -67,6 +70,7 @@ def rush_hour_fee(iso_time: str, current_fee) -> int:
     RUSH_HOUR_FEE = current_fee * 0.2
 
     # don't apply if the order is not placed on a Friday
+    # Monday == 0 ... Sunday == 6
     if ORDER_TIME.weekday() != 4:
         return 0
 
