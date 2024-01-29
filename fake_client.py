@@ -1,7 +1,7 @@
 #!/bin/python3.11
 
 import random
-from requests import post
+from requests import post, exceptions
 from datetime import datetime
 from calculations import rush_hour_fee
 import sys
@@ -39,10 +39,13 @@ def random_order() -> None:
     if rush_hour_fee(time, cart_value):
         print("Friday rush")
 
-    response = post(api_url, json=body).json()
-    sleep(0.2)  # To avoid mixing up the docker logs
-    print("Response body:")
-    print(response)
+    try:
+        response = post(api_url, json=body).json()
+        sleep(0.2)  # To avoid mixing up the docker logs
+        print("Response body:")
+        print(response)
+    except exceptions.ConnectionError:
+        print("Connection error - Is the API running?")
 
 
 if len(sys.argv) > 1 and sys.argv[1] == "--container":
