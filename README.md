@@ -49,7 +49,7 @@ endpoint with `curl` or the `fake_client.py` script.
 # Linux / macOS
 source venv/bin/activate
 # Windows
-venv\Scripts\activate.bat
+.\venv\Scripts\activate.ps1
 ```
 
 2. Install the dependencies
@@ -62,8 +62,6 @@ pip install -r requirements.txt
 
 ```bash
 uvicorn main:app
-# the default port is 8000, but you can choose a custom one like this
-uvicorn main:app --port 4321
 ```
 
 4. Make a POST request to the endpoint
