@@ -56,7 +56,7 @@ endpoint with `curl` or the `fake_client.py` script.
 # Linux / macOS
 source venv/bin/activate
 # Windows
-.\venv\Scripts\Activate.ps1
+.\venv\Scripts\activate
 ```
 
 2. Install the dependencies
@@ -82,8 +82,6 @@ or use the fake client for randomized requests:
 ```bash
 # linux / macOS
 python3 fake_client.py
-# Windows
-python fake_client.py
 ```
 
 ### How to run tests
