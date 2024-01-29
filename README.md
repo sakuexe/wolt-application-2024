@@ -2,6 +2,9 @@
 
 Created by: Saku Karttunen (22.01.-31.01.2024)
 
+If you are trying to run the API on windows, consider running inside the WSL2 terminal.
+Or through the Docker container. Since I have built the API on my local Linux PC.
+
 ## Assignment
 
 The assignment was to create a simple HTTP API Endpoint that calculates the delivery fee for an order.
@@ -49,7 +52,7 @@ endpoint with `curl` or the `fake_client.py` script.
 # Linux / macOS
 source venv/bin/activate
 # Windows
-.\venv\Scripts\activate.ps1
+.\venv\Scripts\Activate.ps1
 ```
 
 2. Install the dependencies
