@@ -14,9 +14,11 @@ The original assignment is in it's [original repository](https://github.com/wolt
 ## Used Technologies
 
 - [Python 3.11](https://www.python.org/)
-- [FastAPI](https://fastapi.tiangolo.com/)
-- [Uvicorn](https://www.uvicorn.org/)
-- [pytest](https://docs.pytest.org/en/6.2.x/)
+- [FastAPI](https://fastapi.tiangolo.com/) - A Python framework for creating APIs
+- [Uvicorn](https://www.uvicorn.org/) - For running the API
+- [pytest](https://docs.pytest.org/en/6.2.x/) - For testing the API
+- [Docker](https://www.docker.com/) - For containerizing the API
+- [Requests](https://docs.python-requests.org/en/latest/) - For making randomized requests to the API
 
 ## How to run
 
@@ -26,16 +28,18 @@ The original assignment is in it's [original repository](https://github.com/wolt
 
 ```bash
 docker-compose up
+# or if you want to run it in the background
+docker-compose up -d
 ```
+
+The container has the port `8000` exposed, so you can access it from `localhost:8000`.
 
 I added a fake client that makes randomized order requests to the API.
 So you can just run the program and see the results. This "client"
 only makes 3 orders and then stops.
 
-If you want to make more requests, you can make requests to the
+Once the container is running. You can make more requests to the
 endpoint with `curl` or the `fake_client.py` script.
-
-The guide to those in the "Manually" section (part 4.).
 
 ### Manually
 
@@ -83,7 +87,7 @@ The tests are located in the `tests` directory. I used FastAPI's `TestClient` to
 and simple `pytest` compatible functions to create unit tests for all the small parts as well
 as more general tests for the entirety of the API.
 
-To run the tests, run the following command:
+To run the tests, run the following command in the root directory of the project:
 
 ```bash
 pytest
