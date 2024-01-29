@@ -13,7 +13,7 @@ It is made to be used to test and review the API.
 """
 
 ORDER_INTERVAL = 3  # Seconds between orders
-NUMBER_OF_ORDERS = 10  # Number of orders to generate
+NUMBER_OF_ORDERS = 5  # Number of orders to generate
 
 api_url = "http://localhost:8000/"
 if len(sys.argv) > 1 and sys.argv[1] == "--container":

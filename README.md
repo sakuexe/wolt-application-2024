@@ -36,7 +36,7 @@ The container has the port `8000` exposed, so you can access it from `localhost:
 
 I added a fake client that makes randomized order requests to the API.
 So you can just run the program and see the results. This "client"
-only makes 3 orders and then stops.
+only makes 5 orders and then stops.
 
 Once the container is running. You can make more requests to the
 endpoint with `curl` or the `fake_client.py` script.
