@@ -2,8 +2,12 @@
 
 Created by: Saku Karttunen (22.01.-31.01.2024)
 
-If you are trying to run the API on windows, consider running inside the WSL2 terminal.
-Or through the Docker container. Since I have built the API on my local Linux PC.
+### Windows Disclaimer!
+
+If you are trying to run the API on Windows, consider running inside the WSL2 terminal.
+Or through the Docker container. (I made it for guaranteeing compatibility between operating systems)
+
+I built the API on my Linux machine and I cannot guarantee that it works the same way on Windows.
 
 ## Assignment
 
