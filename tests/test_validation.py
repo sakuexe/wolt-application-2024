@@ -18,7 +18,7 @@ def test_invalid_cart_value():
     }
     client = TestClient(app)
     response = client.post(
-        "/", headers={"Conent-Type": "application/json"}, json=request)
+        "/", headers={"Content-Type": "application/json"}, json=request)
     assert response.status_code == 400
     assert response.json() == {
         "detail": "Invalid input. Reason: `cart_value` is negative"
@@ -35,7 +35,7 @@ def test_invalid_number_of_items():
     }
     client = TestClient(app)
     response = client.post(
-        "/", headers={"Conent-Type": "application/json"}, json=request)
+        "/", headers={"Content-Type": "application/json"}, json=request)
     assert response.status_code == 400
     assert response.json() == {
         "detail": "Invalid input. Reason: `number_of_items` is negative"
@@ -52,7 +52,7 @@ def test_invalid_time_format():
     }
     client = TestClient(app)
     response = client.post(
-        "/", headers={"Conent-Type": "application/json"}, json=request)
+        "/", headers={"Content-Type": "application/json"}, json=request)
     assert response.status_code == 400
     assert response.json() == {
         "detail": "Invalid input. Reason: `time` is not in ISO format"
@@ -69,7 +69,7 @@ def test_invalid_timezone():
     }
     client = TestClient(app)
     response = client.post(
-        "/", headers={"Conent-Type": "application/json"}, json=request)
+        "/", headers={"Content-Type": "application/json"}, json=request)
     assert response.status_code == 400
     assert response.json() == {
         "detail": "Invalid input. Reason: `time` is not in UTC timezone"

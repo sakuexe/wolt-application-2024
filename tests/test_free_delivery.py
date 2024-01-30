@@ -15,7 +15,7 @@ def test_free_delivery():
     client = TestClient(app)
     response = client.post(
         "/",
-        headers={"Conent-Type": "application/json"},
+        headers={"Content-Type": "application/json"},
         json={"cart_value": 20000, "delivery_distance": 3821,
               "number_of_items": 15, "time": "2024-01-19T18:59:50Z"}
     )
@@ -38,7 +38,7 @@ def test_over_maximum():
     client = TestClient(app)
     response = client.post(
         "/",
-        headers={"Conent-Type": "application/json"},
+        headers={"Content-Type": "application/json"},
         json={"cart_value": 3500, "delivery_distance": 4501,
               "number_of_items": 15, "time": "2024-01-19T18:59:50Z"}
     )

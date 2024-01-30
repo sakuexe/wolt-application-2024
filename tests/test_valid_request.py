@@ -24,7 +24,7 @@ def test_example_order():
 
     client = TestClient(app)
     response = client.post(
-        "/", headers={"Conent-Type": "application/json"}, json=order)
+        "/", headers={"Content-Type": "application/json"}, json=order)
 
     assert response.status_code == 200
     assert response.json() == {
@@ -49,7 +49,7 @@ def test_small_order():
 
     client = TestClient(app)
     response = client.post(
-        "/", headers={"Conent-Type": "application/json"}, json=order)
+        "/", headers={"Content-Type": "application/json"}, json=order)
 
     assert response.status_code == 200
     assert response.json() == {
@@ -74,7 +74,7 @@ def test_bulk_order():
 
     client = TestClient(app)
     response = client.post(
-        "/", headers={"Conent-Type": "application/json"}, json=order)
+        "/", headers={"Content-Type": "application/json"}, json=order)
 
     assert response.status_code == 200
     assert response.json() == {
@@ -100,7 +100,7 @@ def test_rush_hour():
     client = TestClient(app)
     response = client.post(
         "/",
-        headers={"Conent-Type": "application/json"},
+        headers={"Content-Type": "application/json"},
         json=order
     )
 
@@ -128,7 +128,7 @@ def test_all_fees():
     client = TestClient(app)
     response = client.post(
         "/",
-        headers={"Conent-Type": "application/json"},
+        headers={"Content-Type": "application/json"},
         json=order
     )
 

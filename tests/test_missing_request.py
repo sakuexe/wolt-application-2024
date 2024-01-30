@@ -14,7 +14,7 @@ def test_no_cart_value():
     }
     client = TestClient(app)
     response = client.post(
-        "/", headers={"Conent-Type": "application/json"}, json=order)
+        "/", headers={"Content-Type": "application/json"}, json=order)
     assert response.status_code == 422
 
 
@@ -27,7 +27,7 @@ def test_no_delivery_distance():
     }
     client = TestClient(app)
     response = client.post(
-        "/", headers={"Conent-Type": "application/json"}, json=order)
+        "/", headers={"Content-Type": "application/json"}, json=order)
     assert response.status_code == 422
 
 
@@ -40,7 +40,7 @@ def test_no_number_of_items():
     }
     client = TestClient(app)
     response = client.post(
-        "/", headers={"Conent-Type": "application/json"}, json=order)
+        "/", headers={"Content-Type": "application/json"}, json=order)
     assert response.status_code == 422
 
 
@@ -52,5 +52,5 @@ def test_no_time():
     }
     client = TestClient(app)
     response = client.post(
-        "/", headers={"Conent-Type": "application/json"}, json=order)
+        "/", headers={"Content-Type": "application/json"}, json=order)
     assert response.status_code == 422
